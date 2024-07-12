@@ -43,6 +43,7 @@ typedef enum {
 } send_file_stage;
 
 int some_unique;
+/// @brief 
 static idevice_t device;
 static lockdownd_client_t lockdownd;
 
@@ -286,7 +287,8 @@ void* add_file(plist_t files, char* crap, uint64_t crap_size, char* domain, char
 	plist_dict_insert_item(manifest, "ModificationTime", plist_new_date(2020964986UL, 0));
 	plist_dict_insert_item(files, manifestkey, manifest);
 
-	plist_t info = plist_new_dict();
+	plist_t info = plist_new_dict();cd spirit-linux
+
 	char* templateo = (char*) malloc(0x20);
 	snprintf(templateo, 0x20, "/tmp/stuff.%06d", ++some_unique);
 	plist_dict_insert_item(info, "DLFileDest", plist_new_string(templateo));
@@ -297,6 +299,10 @@ void* add_file(plist_t files, char* crap, uint64_t crap_size, char* domain, char
 	return info;
 }
 
+/// @brief 
+/// @param backup 
+/// @param info 
+/// @param stage 
 void send_file(mobilebackup_client_t backup, plist_t info, send_file_stage stage) {
 	char* crap = NULL;
 	uint64_t crap_size = 0;
